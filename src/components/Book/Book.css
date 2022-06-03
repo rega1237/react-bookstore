@@ -1,0 +1,29 @@
+.book-container {
+  display: flex;
+  width: 75%;
+  border: solid 2px black;
+  align-items: center;
+  margin: 0 auto 20px auto;
+  padding: 1rem;
+}
+
+.book-data {
+  flex: 2;
+}
+
+.book-action {
+  display: flex;
+  gap: 5px;
+}
+
+.book-action li {
+  list-style: none;
+}
+
+.book-track {
+  flex: 1;
+}
+
+.book-read {
+  flex: 1;
+}
