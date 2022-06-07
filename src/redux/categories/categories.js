@@ -1,4 +1,4 @@
-const CHECKSTATUS = 'CHECKSTATUS';
+const CHECKSTATUS = 'react-bookstore/books/CHECKSTATUS';
 
 export default function categoriesReducer(state = [], action) {
   switch (action.type) {

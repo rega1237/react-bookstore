@@ -1,7 +1,7 @@
 const { uuid } = require('uuidv4');
 
-const ADDBOOK = 'ADD_BOOK';
-const DELBOOK = 'DELBOOK';
+const ADDBOOK = 'react-bookstore/books/ADDBOOK';
+const DELBOOK = 'react-bookstore/books/DELBOOK';
 
 export default function bookReducer(state = [], action) {
   switch (action.type) {
