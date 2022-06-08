@@ -21,11 +21,13 @@ const InputBook = () => {
           id="title"
           type="text"
           placeholder="Insert Title"
+          required
         />
         <input
           id="author"
           type="text"
           placeholder="Insert Author"
+          required
         />
         <button type="submit">ADD BOOK</button>
       </form>
