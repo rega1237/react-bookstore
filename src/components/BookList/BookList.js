@@ -1,31 +1,18 @@
-import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Book from '../Book/Book';
 
 const BookList = () => {
-  const [books] = useState([{
-    key: 1,
-    title: 'The Hunger Games',
-    author: 'Suzanne Collins',
-  },
-  {
-    key: 2,
-    title: 'The Lord of the Rings',
-    author: 'J. R. R. Tolkien',
-  },
-  {
-    key: 3,
-    title: 'Game of Thrones',
-    author: 'George R. R. Martin',
-  }]);
+  const books = useSelector((state) => state.books);
 
   return (
     <ul>
       {
       books.map((book) => (
         <Book
-          key={book.key}
+          key={book.id}
           title={book.title}
           author={book.author}
+          id={book.id}
         />
       ))
     }

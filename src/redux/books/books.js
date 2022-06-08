@@ -1,9 +1,27 @@
-const { uuid } = require('uuidv4');
+import { v4 as uuidv4 } from 'uuid';
 
 const ADDBOOK = 'react-bookstore/books/ADDBOOK';
 const DELBOOK = 'react-bookstore/books/DELBOOK';
 
-export default function bookReducer(state = [], action) {
+const initialState = [
+  {
+    id: uuidv4(),
+    title: 'The Hunger Games',
+    author: 'Suzanne Collins',
+  },
+  {
+    id: uuidv4(),
+    title: 'The Lord of the Rings',
+    author: 'J. R. R. Tolkien',
+  },
+  {
+    id: uuidv4(),
+    title: 'Game of Thrones',
+    author: 'George R. R. Martin',
+  },
+];
+
+export default function bookReducer(state = initialState, action = {}) {
   switch (action.type) {
     case ADDBOOK:
       return [...state,
@@ -18,7 +36,7 @@ export default function bookReducer(state = [], action) {
 
 export const addBook = (title, author) => ({
   type: ADDBOOK,
-  book: { title, author, id: uuid() },
+  book: { title, author, id: uuidv4() },
 });
 
 export const delBook = (id) => ({
