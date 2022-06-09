@@ -1,6 +1,7 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
-import { addBook } from '../../redux/books/books';
+import { addFetchBook } from '../../redux/books/books';
 
 const InputBook = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,8 @@ const InputBook = () => {
     const valueAuthor = e.target.author.value;
     const title = valueTitle;
     const author = valueAuthor;
-    dispatch(addBook(title, author));
+    const id = uuidv4();
+    dispatch(addFetchBook({ title, author, id }));
     e.target.reset();
   };
   return (

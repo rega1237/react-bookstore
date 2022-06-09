@@ -1,31 +1,20 @@
-import { v4 as uuidv4 } from 'uuid';
-
+const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/hknKVgAmPk30ETdQlybN/books';
 const ADDBOOK = 'react-bookstore/books/ADDBOOK';
 const DELBOOK = 'react-bookstore/books/DELBOOK';
+const GETBOOK = 'react-bookstore/books/GETBOOK';
 
-const initialState = [
-  {
-    id: uuidv4(),
-    title: 'The Hunger Games',
-    author: 'Suzanne Collins',
-  },
-  {
-    id: uuidv4(),
-    title: 'The Lord of the Rings',
-    author: 'J. R. R. Tolkien',
-  },
-  {
-    id: uuidv4(),
-    title: 'Game of Thrones',
-    author: 'George R. R. Martin',
-  },
-];
-
-export default function bookReducer(state = initialState, action = {}) {
+export default function bookReducer(state = [], action = {}) {
   switch (action.type) {
+    case GETBOOK:
+      return [...action.books];
     case ADDBOOK:
-      return [...state,
-        { title: action.book.title, author: action.book.author, id: action.book.id },
+      return [
+        ...state,
+        {
+          title: action.book.title,
+          author: action.book.author,
+          id: action.book.id,
+        },
       ];
     case DELBOOK:
       return state.filter((st) => st.id !== action.bookToDel);
@@ -34,12 +23,76 @@ export default function bookReducer(state = initialState, action = {}) {
   }
 }
 
-export const addBook = (title, author) => ({
+export const addBook = (book) => ({
   type: ADDBOOK,
-  book: { title, author, id: uuidv4() },
+  book,
 });
 
 export const delBook = (id) => ({
   type: DELBOOK,
   bookToDel: id,
 });
+
+export const getBook = (books) => ({
+  type: GETBOOK,
+  books,
+});
+
+export const fetchBook = () => (dispatch) => {
+  const bookList = [];
+  fetch(url, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      const entriesData = Object.entries(result);
+      entriesData.forEach((value) => {
+        bookList.push({
+          title: value[1][0].title,
+          author: value[1][0].author,
+          category: value[1][0].category,
+          id: value[0],
+        });
+      });
+      dispatch(getBook(bookList));
+    });
+};
+
+export const addFetchBook = (book) => async (dispatch) => {
+  const post = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(
+      {
+        item_id: book.id,
+        title: book.title,
+        author: book.author,
+        category: '',
+      },
+    ),
+  });
+  if (post.status === 201) {
+    dispatch(addBook(book));
+  }
+};
+
+export const delFetchBook = (id) => async (dispatch) => {
+  const delUrl = `${url}/${id}`;
+  const delBookFetch = await fetch(delUrl, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  });
+  if (delBookFetch.status === 201) {
+    dispatch(delBook(id));
+  }
+};
