@@ -2,19 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Book.css';
 import { useDispatch } from 'react-redux';
-import { delBook } from '../../redux/books/books';
+import { delFetchBook } from '../../redux/books/books';
 
 const Book = (props) => {
   const dispatch = useDispatch();
-  const { title, author, id } = props;
+  const {
+    title, author, id,
+  } = props;
 
   const delBookHandler = () => {
-    dispatch(delBook(id));
+    dispatch(delFetchBook(id));
   };
   return (
     <div className="book-container">
       <div className="book-data">
-        <h4 className="book-type">Action</h4>
+        <h4 className="book-type">ACTION</h4>
         <h2 className="book-name">{title}</h2>
         <h4 className="book-author">{author}</h4>
         <ul className="book-action">
