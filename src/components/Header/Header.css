@@ -1,7 +1,20 @@
 header {
   display: flex;
-  gap: 2rem;
-  padding: 2rem 5rem;
+  padding: 2rem 6.2rem;
+  background-color: white;
+  justify-content: space-between;
+}
+
+.left-nav {
+  display: flex;
+  gap: 2.8rem;
+}
+
+.left-nav h2 {
+  font-family: var(--monstserrat);
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: var(--blue);
 }
 
 .navBar {
@@ -12,6 +25,16 @@ header {
 }
 
 .navBar a {
+  font-family: var(--monstserrat);
+  font-weight: 400;
   text-decoration: none;
-  color: black;
+  font-size: 0.813rem;
+  color: var(--black);
+}
+
+.right-nav img {
+  border: solid 1px #e8e8e8;
+  border-radius: 50%;
+  width: 30px;
+  padding: 0.3rem;
 }

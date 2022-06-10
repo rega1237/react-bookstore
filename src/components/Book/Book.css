@@ -1,29 +1,109 @@
 .book-container {
   display: flex;
-  width: 75%;
-  border: solid 2px black;
   align-items: center;
-  margin: 0 auto 20px auto;
-  padding: 1rem;
+  margin: 0 6.2rem 2rem;
+  padding: 2rem 1.65rem;
+  background-color: white;
+  border: solid 1px #e8e8e8;
 }
 
 .book-data {
-  flex: 2;
+  flex: 1.5;
+}
+
+.book-type {
+  font-family: var(--monstserrat);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--gray);
+}
+
+.book-name {
+  font-family: var(--roboto);
+  font-size: 1.375rem;
+  color: var(black);
+}
+
+.book-author {
+  font-family: var(--roboto);
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #4386bf;
 }
 
 .book-action {
   display: flex;
-  gap: 5px;
+  margin-top: 1rem;
+  gap: 2rem;
 }
 
 .book-action li {
   list-style: none;
 }
 
+.btn-action {
+  font-family: var(--roboto);
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #4386bf;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .book-track {
   flex: 1;
 }
 
+.book-percentage {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.book-percentage-data h3 { 
+  font-family: var(--monstserrat);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--black);
+}
+
+.book-percentage-data p {
+  font-family: var(--monstserrat);
+  font-size: 0.875rem;
+  color: var(--gray);
+}
+
 .book-read {
   flex: 1;
+  border-left: solid 1px #e8e8e8;
+  padding-left: 4rem;
+  
+}
+
+.book-read p {
+  font-family: var(--roboto);
+  font-size: 0.813rem;
+  font-weight: 300;
+  color: var(--gray);
+}
+
+.book-read h3 {
+  font-family: var(--roboto);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--black);
+  margin-top: 0.3rem;
+}
+
+.btn-update {
+  font-family: var(--roboto);
+  font-size: 0.813rem;
+  font-weight: 300;
+  color: #fff;
+  padding: 0.438rem 1.188rem 0.5rem 1.375rem;
+  border: none;
+  border-radius: 3px;
+  background-color: var(--blue);
+  margin-top: 1.3rem;
 }
