@@ -8,18 +8,18 @@
   font-family: var(--monstserrat);
   font-size: 1.25rem;
   font-weight: 700;
-  color: #888888;
-  margin-bottom: 1.10rem;
+  color: #888;
+  margin-bottom: 1.1rem;
 }
 
 #addBook {
   display: flex;
   align-items: center;
-  gap: 2.10rem;
+  gap: 2.1rem;
 }
 
 #title {
-  flex: 2
+  flex: 2;
 }
 
 .add-input {
@@ -30,11 +30,10 @@
   border: solid 1px var(--white-two);
 }
 
-
 .add-input:focus {
   outline: none !important;
-  border:1px solid #4386bf;
-  box-shadow: 0 0 10px #719ECE;
+  border: 1px solid #4386bf;
+  box-shadow: 0 0 10px #719ece;
 }
 
 .input-btn {
